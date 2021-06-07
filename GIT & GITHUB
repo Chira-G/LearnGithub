@@ -1,0 +1,78 @@
+GIT & GITHUB
+===================
+create a new directory and run this command  // to make a local repo
+git init
+git remote add origin "https://github.com/Chira-G/test-github.git"
+git pull origin master             //master is the default branchname 
+git add filename.txt      //to add a file to github repo
+git add -A     // to add all the files created under current dir to github repo
+git status // to check what all pending ex. new added files
+git commit -m "new file added to master"    // to commit changes done to file with a messege
+results:
+Committer: Pro User <prouser@PRO-USER.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+------------------
+git commit -a -m "added 2 files & 1 modify" //commit multiple files
+===================
+parallel devp
+1. branches
+git branch branchname1		/ to create new branch under master branche
+git checkout branchname1		/to switch from current branch to newly created branchname1
+git checkout master 		/to cswitch back to mastet
+
+2. merging  //combining work from different branch all together into master 
+first get into master branch
+git checkout master
+git merge branchname1
+
+3. rebasing // another kind of merging
+git rebase branchname1
+
+===================
+validate and start pushing changes to giithub
+first need generate ssh public key and thereafter we can push changes to github
+ssh-keygen
+//you will get where the ssh public key is stored in this result .. ex 
+//Your public key has been saved in /Users/prouser/.ssh/id_rsa.pub.
+//copy the key
+prouser@PRO-USER Learn2 % cat /Users/prouser/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDRm1cApBWmyg9aJKm02CA2Hpd7KP/vJJCu4t98GqsbxM2G0OEOxScaWYBIywBPgyNK3JS8XlnWfXrm7xiSHBzahKWDWfB11YvWzyJiwJNade5kHbJ3MGTdaAvsdpZv7z+lJwHmd9U4NhClaxHga8yHSDfxgsyrdBSkpBALD6PtkZAzBJ8D4ly+QIReh+bNshJj/Qy9jMuHdAYWKAxNQt6+IiaXxttY0fSQeFLLigQ17klb3w4B/9cQcFcK2IeAUPyyamyfa7Lg6HWUQEGKCHf7ivKduGb81398ZwA9SnT6BoFT11QifetVG9pc8w7uF7iU4qI00UTs1G1nWDWf3lHeCCJ+SBIitqHF746lJq34CGuxZ/mu7GE9hJplQ0KETkJ3lfmRwZ5Nw5R2YsLBoKQZp9VPTsCDtOXqz3VnVRF57slVkHFoIFAE6UlUZJUikiv5j6e118NX6eLqPWlppTS0jEKalV4gNa8BnpIebkfJ+mvLO3I+eISiTc7NzIJECFM= prouser@PRO-USER.local
+
+-Now go to gihub > Github main settings >ssh and GPG keys >New ssh key> paste the ssh public key here> and save
+
+-Now run this command in terminal
+ssh -T git@github.com   		//now You've successfully authenticated,
+===================
+Push commands
+git push origin branchname1
+
+if required to push to master , then 
+git checkout master
+git push origin master
+===================
+revert back to previous changes
+git log			\\check logs and copy the first 8 digits of hexadecimal commit code from the respective name of the file (for ex. file1.txt hexa code :d17977e7)
+
+git checkout d17977e7 file1.txt
+
+after the revert need to add the updates , and the commit the changes again
+git status
+git add filename2.txt
+git commit -m "reverted changes"
+git push origin master 		\\push to github
+===================
+
+
+
+
